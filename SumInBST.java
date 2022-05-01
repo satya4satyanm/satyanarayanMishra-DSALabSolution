@@ -5,29 +5,25 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SumInBST {
-
     // convert tree to list to find sum
     static List<Integer> ArrList = new ArrayList<>();
 
     // BST node
     static class Node {
         int key;
-        Node left, right;
+        com.gl.satya4satyanm.SumInBST.Node left, right;
+
+        Node(int key) {
+            this.key = key;
+            left = null;
+            right = null;
+        }
     }
 
-    // creation of new node
-    static Node newNode(int data) {
-        Node temp = new Node();
-        temp.key = data;
-        temp.left = null;
-        temp.right = null;
-        return temp;
-    }
-
-    static Node insert(Node root, int key) {
-        Node newnode = newNode(key);
-        Node x = root;
-        Node current_parent = null;
+    static com.gl.satya4satyanm.SumInBST.Node insert(com.gl.satya4satyanm.SumInBST.Node root, int key) {
+        com.gl.satya4satyanm.SumInBST.Node newnode = new com.gl.satya4satyanm.SumInBST.Node(key);
+        com.gl.satya4satyanm.SumInBST.Node x = root;
+        com.gl.satya4satyanm.SumInBST.Node current_parent = null;
         while (x != null) {
             current_parent = x;
             if (key < x.key) x = x.left;
@@ -48,7 +44,7 @@ public class SumInBST {
         return current_parent;
     }
 
-    static void Inorder(Node root) {
+    static void Inorder(com.gl.satya4satyanm.SumInBST.Node root) {
         if (root == null) return;
         else {
             Inorder(root.left);
@@ -62,7 +58,7 @@ public class SumInBST {
         Scanner sc = new Scanner(System.in);
         int value;
         boolean status;
-        Node root = null;
+        com.gl.satya4satyanm.SumInBST.Node root = null;
         int[] arr = {40, 20, 60, 10, 30, 50, 70};
         for (int i = 0; i < arr.length; i++) {
             value = arr[i];
