@@ -18,23 +18,26 @@ public class BalancedBrackets {
         List<String> arr = Arrays.asList(str.split(" "));
 
         Stack charStack = new Stack<String>();
-        for (int i = 0; i < arr.size(); i++) {
-            if (arr.get(i).equals(CURLY_START) ||
-                    arr.get(i).equals(SQUARE_START) ||
-                    arr.get(i).equals(CIRCLE_START)
-            ) {
-                charStack.add(arr.get(i));
-            } else if (
-                    charStack.size() > 0 &&
-                            ((arr.get(i).equals(CURLY_END) && charStack.peek().equals(CURLY_START)) ||
-                                    (arr.get(i).equals(SQUARE_END) && charStack.peek().equals(SQUARE_START)) ||
-                                    (arr.get(i).equals(CIRCLE_END) && charStack.peek().equals(CIRCLE_START)))
-            ) {
-                charStack.pop();
-            } else if (i == 0) {
-                charStack.add(arr.get(i));
-            } else {
-                charStack.add(arr.get(i));
+
+        if(charStack.size() % 2 == 0) {
+            for (int i = 0; i < arr.size(); i++) {
+                if (arr.get(i).equals(CURLY_START) ||
+                        arr.get(i).equals(SQUARE_START) ||
+                        arr.get(i).equals(CIRCLE_START)
+                ) {
+                    charStack.add(arr.get(i));
+                } else if (
+                        charStack.size() > 0 &&
+                                ((arr.get(i).equals(CURLY_END) && charStack.peek().equals(CURLY_START)) ||
+                                        (arr.get(i).equals(SQUARE_END) && charStack.peek().equals(SQUARE_START)) ||
+                                        (arr.get(i).equals(CIRCLE_END) && charStack.peek().equals(CIRCLE_START)))
+                ) {
+                    charStack.pop();
+                } else if (i == 0) {
+                    charStack.add(arr.get(i));
+                } else {
+                    charStack.add(arr.get(i));
+                }
             }
         }
         // System.out.println("character stack contains: " + charStack);
