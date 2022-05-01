@@ -56,10 +56,13 @@ public class SumInBST {
 
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
+
         int value;
         boolean status;
         com.gl.satya4satyanm.SumInBST.Node root = null;
+
         int[] arr = {40, 20, 60, 10, 30, 50, 70};
+
         for (int i = 0; i < arr.length; i++) {
             value = arr[i];
             if (root == null) {
@@ -77,16 +80,21 @@ public class SumInBST {
 
         int start = 0;
         int end = ArrList.size() - 1;
+        boolean found = false;
         while (start < end) {
             if (ArrList.get(start) + ArrList.get(end) == target)
             {
                 System.out.println("Pair is (" + ArrList.get(start) + "," + ArrList.get(end) + ")");
-                return;
+                //return;
+                end--;
+                start++;
+                found = true;
+                continue;
             }
             if (ArrList.get(start) + ArrList.get(end) > target) end--;
             if (ArrList.get(start) + ArrList.get(end) < target) start++;
         }
-        System.out.println("nodes are not found.");
+        if(!found) System.out.println("nodes are not found.");
         sc.close();
     }
 }
